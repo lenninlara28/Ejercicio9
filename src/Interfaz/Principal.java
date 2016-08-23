@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,6 +55,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel2.setText("Ingrese Su  Monto Inicial");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
+        txtInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActionListener(evt);
+            }
+        });
         txtInicial.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtInicialKeyTyped(evt);
@@ -65,6 +71,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setText("Ingrese Su Monto Final");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 160, -1));
 
+        txtFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActionListener(evt);
+            }
+        });
         txtFinal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtFinalKeyTyped(evt);
@@ -160,6 +171,10 @@ public class Principal extends javax.swing.JFrame {
               getToolkit().beep(); 
               evt.consume();}
     }//GEN-LAST:event_txtFinalKeyTyped
+
+    private void ActionListener(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActionListener
+       ((JComponent) evt.getSource()).transferFocus();
+    }//GEN-LAST:event_ActionListener
 
     /**
      * @param args the command line arguments
