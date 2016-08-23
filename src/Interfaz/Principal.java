@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author hp 14
@@ -51,11 +53,23 @@ public class Principal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("Ingrese Su  Monto Inicial");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        txtInicial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtInicialKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 110, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Ingrese Su Monto Final");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 160, -1));
+
+        txtFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFinalKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 110, -1));
 
         cmbConsultar.setBackground(new java.awt.Color(0, 0, 0));
@@ -106,6 +120,15 @@ public class Principal extends javax.swing.JFrame {
     private void cmbConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbConsultarActionPerformed
        String Descuento,total;
        int ini,fini,resul,porcen,costo;
+       
+       if (txtInicial.getText().trim().isEmpty()){
+         JOptionPane.showMessageDialog(this,"Digite Monto Inicial","error", JOptionPane.ERROR_MESSAGE);
+         txtInicial.requestFocusInWindow();}
+       else if (txtFinal.getText().trim().isEmpty()){
+         JOptionPane.showMessageDialog(this,"Digite Monto Final ","error", JOptionPane.ERROR_MESSAGE);
+         txtFinal.requestFocusInWindow();}
+       else{
+              
        ini=Integer.parseInt(txtInicial.getText());
        fini=Integer.parseInt(txtFinal.getText());
        
@@ -119,8 +142,24 @@ public class Principal extends javax.swing.JFrame {
       total= String.valueOf(costo);
       txtMonto.setText("$"+total);
        
-       
+       }
     }//GEN-LAST:event_cmbConsultarActionPerformed
+
+    private void txtInicialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInicialKeyTyped
+        char c=evt.getKeyChar(); 
+         
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+              evt.consume();}
+    }//GEN-LAST:event_txtInicialKeyTyped
+
+    private void txtFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFinalKeyTyped
+        char c=evt.getKeyChar(); 
+         
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+              evt.consume();}
+    }//GEN-LAST:event_txtFinalKeyTyped
 
     /**
      * @param args the command line arguments
