@@ -112,6 +112,11 @@ public class Principal extends javax.swing.JFrame {
         cmbNuevo.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         cmbNuevo.setForeground(new java.awt.Color(255, 255, 255));
         cmbNuevo.setText("Nueva Tarjeta");
+        cmbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbNuevoActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,11 +143,16 @@ public class Principal extends javax.swing.JFrame {
        else if (txtFinal.getText().trim().isEmpty()){
          JOptionPane.showMessageDialog(this,"Digite Monto Final ","error", JOptionPane.ERROR_MESSAGE);
          txtFinal.requestFocusInWindow();}
+  
        else{
               
        ini=Integer.parseInt(txtInicial.getText());
        fini=Integer.parseInt(txtFinal.getText());
        
+      if(fini>ini){
+           JOptionPane.showMessageDialog(this,"Su Monto Final No Puede Ser Mayor","error", JOptionPane.ERROR_MESSAGE);
+         txtFinal.requestFocusInWindow();
+       }else{
        resul=ini-fini;
        porcen=(resul*20)/100;
        costo=resul+porcen;
@@ -152,7 +162,7 @@ public class Principal extends javax.swing.JFrame {
       
       total= String.valueOf(costo);
       txtMonto.setText("$"+total);
-       
+      }
        }
     }//GEN-LAST:event_cmbConsultarActionPerformed
 
@@ -175,6 +185,15 @@ public class Principal extends javax.swing.JFrame {
     private void ActionListener(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActionListener
        ((JComponent) evt.getSource()).transferFocus();
     }//GEN-LAST:event_ActionListener
+
+    private void cmbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNuevoActionPerformed
+        txtInicial.setText("");
+        txtFinal.setText("");
+        txtMonto.setText("");
+        txtRecargo.setText("");
+        txtInicial.requestFocusInWindow();
+        
+    }//GEN-LAST:event_cmbNuevoActionPerformed
 
     /**
      * @param args the command line arguments
