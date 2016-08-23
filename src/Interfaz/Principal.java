@@ -151,8 +151,8 @@ public class Principal extends javax.swing.JFrame {
        
       if(fini>ini){
            JOptionPane.showMessageDialog(this,"Su Monto Final No Puede Ser Mayor","error", JOptionPane.ERROR_MESSAGE);
-         txtFinal.requestFocusInWindow();
-       }else{
+         txtFinal.requestFocusInWindow();}
+       else{
        resul=ini-fini;
        porcen=(resul*20)/100;
        costo=resul+porcen;
