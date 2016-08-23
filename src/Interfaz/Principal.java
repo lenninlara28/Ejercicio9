@@ -62,6 +62,11 @@ public class Principal extends javax.swing.JFrame {
         cmbConsultar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         cmbConsultar.setForeground(new java.awt.Color(255, 255, 255));
         cmbConsultar.setText("OK");
+        cmbConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbConsultarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmbConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -97,6 +102,25 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbConsultarActionPerformed
+       String Descuento,total;
+       int ini,fini,resul,porcen,costo;
+       ini=Integer.parseInt(txtInicial.getText());
+       fini=Integer.parseInt(txtFinal.getText());
+       
+       resul=ini-fini;
+       porcen=(resul*20)/100;
+       costo=resul+porcen;
+       
+      Descuento=String.valueOf(porcen);
+      txtRecargo.setText("$"+Descuento);
+      
+      total= String.valueOf(costo);
+      txtMonto.setText("$"+total);
+       
+       
+    }//GEN-LAST:event_cmbConsultarActionPerformed
 
     /**
      * @param args the command line arguments
